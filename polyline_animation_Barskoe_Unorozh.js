@@ -107,8 +107,7 @@ function init(ymaps) {
         preset: 'islands#blueStretchyIcon',
     });
 
-    function playAnimation(cycle) {
-        cycle1 = !cycle;
+    function playAnimation() {
         // adding the first point to the map
         myMap.geoObjects.add(firstPoint)
         // animating the first line
@@ -127,20 +126,14 @@ function init(ymaps) {
             myMap.geoObjects.remove(firstPoint);
             myMap.geoObjects.remove(secondPoint);
             firstAnimatedLine.reset();
-            /*if (cycle) {
-                myMap.setCenter([centerCoords[0] * 0.99999999, centerCoords[1] * 0.99999999]);
-            }
-            else {
-                myMap.setCenter([centerCoords[0] * 1.00000001, centerCoords[1] * 1.00000001]);
-            }*/
             return ymaps.vow.delay(null, 3000);
         })
         .then(function() {
             // restarting animation
-            playAnimation(cycle1);
+            playAnimation();
         }) );
     }
     
     // surprisingly, play animation
-    playAnimation(true);
+    playAnimation();
 }
